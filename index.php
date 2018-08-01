@@ -36,9 +36,17 @@ foreach ($events as $event) {
     $bot->replyText($event->getReplyToken(), "位置情報を送信してください。");
     continue;
   }
+
+  //サービス終了の通知を返信
+  $messageStr = 'サービスを終了しました。 ';
+  $messageStr = $messageStr . "\r\n";
+  $messageStr = $messageStr . "\r\n" . 'サービスに関するお問合せは、下記アドレスまでお願い致します。';
+  $messageStr = $messageStr . "\r\n" . 'iryo@sbs-infosys.co.jp';
+  $bot->replyText($event->getReplyToken(), $messageStr);
   // オウム返し
   //$bot->replyText($event->getReplyToken(), $event->getText());
 
+  /*
   //APIをコール
   //$jsonString = file_get_contents('https://afternoon-bastion-78019.herokuapp.com/tsunami/index?idou=' . $event->getLatitude() . '_' . $event->getLongitude() . '_640_640_jpg_16');
   //error_log('https://afternoon-bastion-78019.herokuapp.com/tsunami/index?idou=' . $event->getLatitude() . '_' . $event->getLongitude() . '_640_640_jpg_16');
@@ -55,6 +63,7 @@ foreach ($events as $event) {
     //$bot->replyText($event->getReplyToken(), $val);
     replyImageMessage($bot, $event->getReplyToken(), $val, $val);
   }
+  */
 
 }
 
